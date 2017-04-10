@@ -16,7 +16,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<title>
-	<?php if ( is_single() /** ! is_front_page() に書き換えよう！（CHAPTER 8） */ ) {
+	<?php if ( !is_front_page /** ! is_front_page() に書き換えよう！（CHAPTER 8） */ ) {
 		wp_title( '::', true, 'right' );
 	}
 	bloginfo( 'name' ); ?>
@@ -37,7 +37,7 @@
 		<div id="header" class="clearfix">
 			<div class="alignleft">
 				<?php /** 下記の echo home_url( '/' ) を echo esc_url( home_url( '/' ) ) に書き換えよう！（CHAPTER 8） */ ?>
-				<h1 id="logo"><a href="<?php echo home_url( '/' ); ?>"><span><?php bloginfo( 'name' ); ?></span></a></h1>
+				<h1 id="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><span><?php bloginfo( 'name' ); ?></span></a></h1>
 				<p id="description"><?php bloginfo( 'description' ); ?></p>
 			</div>
 			<div class="alignright">
