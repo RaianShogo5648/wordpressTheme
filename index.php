@@ -32,7 +32,7 @@ get_header(); ?>
 							 * 下記の the_date() を the_time( get_option( 'date_format' ) ) に書き換える（CHAPTER 9）
 							 */
 						?>
-						<span class="post-date"><?php the_date(); ?></span>
+						<span class="post-date"><?php the_time( get_option( 'date_format') ) ?></span>
 						<span class="category">Category - <?php the_category( ', ' ); ?></span>
 						<span class="comment-num"><?php comments_popup_link( 'Comment : 0', 'Comment : 1', 'Comments : %' ); ?></span>
 					</p>
