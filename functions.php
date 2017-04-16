@@ -44,4 +44,13 @@ add_theme_support( 'menus' );
 register_nav_menu( 'header-navi', 'ヘッダーのナビゲーション' );
 // register_nav_menu( 'sidebar-navi', 'サイドバーのナビゲーション' );
 // register_nav_menu( 'footer-navi', 'フッターのナビゲーション' );
+
+/** アイキャッチ画像機能を有効にするコード（CHAPTER 14）*/
+add_theme_support( 'post-thumbnails' );
+
+/** フィルターフックの表示の変更（CHAPTER 14） */
+function new_excerpt_more ( $more ) {
+	return '...';
+}
+add_filter( 'excerpt_more', 'new_excerpt_more' );
 ?>

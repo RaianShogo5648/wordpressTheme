@@ -23,27 +23,31 @@ get_header(); ?>
 			while ( have_posts() ) : the_post(); ?>
 
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+					<div class="content-box">
+						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
-					<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+						<p class="post-meta">
+							<span class="post-date"><?php the_time( get_option( 'date_format') ) ?></span>
+							<span class="category">Category - <?php the_category( ', ' ); ?></span>
+							<span class="comment-num"><?php comments_popup_link( 'Comment : 0', 'Comment : 1', 'Comments : %' ); ?></span>
+						</p>
 
-					<p class="post-meta">
+						<?php the_excerpt(); ?>
+						<p class="more-link">
+							<a href="<?php the_permalink(); ?>" title="「<?php the_title(); ?>」の続きを読む">続きを読む &raquo;</a>
+						</p>
+					</div>
+					<p class="thumbnail-box">
 						<?php
-							/**
-							 * 下記の the_date() を the_time( get_option( 'date_format' ) ) に書き換える（CHAPTER 9）
-							 */
+							if( has_post_thumbnail() ) :
+								the_post_thumbnail( 'thumbnail' );
+							else:
 						?>
-						<span class="post-date"><?php the_time( get_option( 'date_format') ) ?></span>
-						<span class="category">Category - <?php the_category( ', ' ); ?></span>
-						<span class="comment-num"><?php comments_popup_link( 'Comment : 0', 'Comment : 1', 'Comments : %' ); ?></span>
+						<img src="<?php echo get_template_directory_uri(); ?>/images/noimage.gif" alt="noimage" />
+						<?php
+							endif;
+						?>
 					</p>
-
-					<?php
-						/**
-						 * コンテンツを表示する
-						 */
-						the_content( '続きを読む &raquo;', true );
-					?>
-
 				</div><!-- /#post -->
 
 		<?php
