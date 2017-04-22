@@ -47,3 +47,23 @@
 		</div>
 		<!-- / header -->
 <!-- /header.php -->
+	<?php
+	 	if ((is_home() && !is_paged()) ||
+			(is_page() && has_post_thumbnail($post -> ID)) ):
+	?>
+	<div id="header-image">
+		<?php
+		 	if (is_page() ):
+				echo get_the_post_thumbnail( $post -> ID, 'header-image' );
+			else :
+		?>
+		<img src="<?php header_image(); ?>"
+				width="<?php echo get_custom_header() -> width; ?>"
+				height="<?php echo get_custom_header() -> height; ?>" alt="" />
+		<?php
+			endif;
+		?>
+	</div>
+	<?php
+		endif;
+	?>

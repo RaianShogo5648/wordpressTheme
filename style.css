@@ -42,7 +42,9 @@ body {
     line-height: 160%;
 }
 
-
+table {
+	padding: 5px;
+}
 /****************************************
 
           Typography

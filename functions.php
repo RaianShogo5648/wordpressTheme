@@ -53,4 +53,32 @@ function new_excerpt_more ( $more ) {
 	return '...';
 }
 add_filter( 'excerpt_more', 'new_excerpt_more' );
+
+$args = array(
+	'width' => 940,
+	'flex-height' => true,
+	'height' => 250,
+	'header-text' => true,
+	'default-text-color' => 'ffffff',
+	'default-image' => get_template_directory_uri().'/images/header.jpg',
+	"uploads" => true,
+	'wp-head-callback' => 'header_style',
+);
+add_theme_support( 'custom-header', $args);
+
+function header_style() {
 ?>
+<style>
+	#header-image {
+		background: url(<?php header_image(); ?>);
+		color: #<?php header_textcolor(); ?>;
+		width: <?php echo get_custom_header() -> width; ?>px;
+		height: <?php echo get_custom_header() -> height; ?>px;
+	}
+	#header-image p {
+		padding: 5em 3em;
+	}
+</style>
+<?php
+add_image_size( 'header-image', 940, 250, true );
+} ?>
